@@ -1,5 +1,5 @@
 <html>
     <body>
-        <h1>Hello, {{ $name }}</h1>
+        <p>randomlovecraft.com</p>
     </body>
 </html>

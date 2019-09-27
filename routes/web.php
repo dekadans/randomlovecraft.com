@@ -13,5 +13,13 @@
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 $router->get('/', function () use ($router) {
-    return view('index', ['name' => 'Tomas']);
+    return view('index');
+});
+
+
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->get('sentence', 'SentenceController@all');
+    $router->get('sentence/{book}', 'SentenceController@book');
+
+    $router->get('books', 'BooksController@listBooks');
 });
