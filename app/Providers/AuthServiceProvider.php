@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use App\ApiKey;
 use App\User;
-use Illuminate\Support\Facades\Gate;
+use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -16,7 +16,6 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
     }
 
     /**
@@ -31,10 +30,13 @@ class AuthServiceProvider extends ServiceProvider
         // should return either a User instance or null. You're free to obtain
         // the User instance via an API token or any other method necessary.
 
-        $this->app['auth']->viaRequest('api', function ($request) {
+        $this->app['auth']->viaRequest('api', function (Request $request) {
             if ($request->input('key')) {
-                //return User::where('api_token', $request->input('api_token'))->first();
-                return ApiKey::where('api_key', $request->input('key'))->first();
+                $apiKey = ApiKey::where('api_key', $request->input('key'))->first();
+
+                if ($apiKey->active) {
+                    return $apiKey;
+                }
             }
         });
     }

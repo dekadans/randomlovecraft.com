@@ -2,29 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use App\ApiActivity;
+use App\Book;
+use App\Http\Resources\Sentence as SentenceResource;
+use App\Sentence;
+use Illuminate\Http\Request;
+
 class SentenceController extends Controller
 {
-    public function all()
+    private $numberOfResults;
+
+    public function __construct(Request $request)
     {
-        return response()->json([
-            'sentence' => 'En slumpad mening.',
-            'book' => [
-                'name' => 'Boken',
-                'year' => '2010',
-                'id' => '1'
-            ]
-        ]);
+        $this->numberOfResults = is_numeric($request->input('n')) ? (int)$request->input('n') : 1;
     }
 
-    public function book($book)
+    public function all()
     {
-        return response()->json([
-            'sentence' => 'En ANNAN slumpad mening.',
-            'book' => [
-                'name' => $book,
-                'year' => '2010',
-                'id' => rand(1,10)
-            ]
-        ]);
+        $sentences = Sentence::inRandomOrder()->with('book')->limit($this->numberOfResults)->get();
+        return SentenceResource::collection($sentences);
+    }
+
+    public function book($bookId)
+    {
+        $book = Book::where('uuid', $bookId)->first();
+
+        $sentences = $book->sentences()->inRandomOrder()->with('book')->limit($this->numberOfResults)->get();
+
+        return SentenceResource::collection($sentences);
     }
 }

@@ -2,23 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Book;
+use App\Http\Resources\Book as BookResource;
+
 class BooksController extends Controller
 {
     public function listBooks()
     {
-        return response()->json(
-            [
-                [
-                    'name' => 'Boken',
-                    'year' => '2010',
-                    'id' => '1'
-                ],
-                [
-                    'name' => 'Boken 2: Uppföljaren',
-                    'year' => '2014',
-                    'id' => '2'
-                ]
-            ]
-        );
+        $books = Book::all();
+        return BookResource::collection($books);
     }
 }
