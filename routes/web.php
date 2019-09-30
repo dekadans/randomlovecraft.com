@@ -17,7 +17,7 @@ $router->get('/', function () use ($router) {
 });
 
 
-$router->group(['prefix' => 'api'], function () use ($router) {
+$router->group(['prefix' => 'api', 'middleware' => 'auth'], function () use ($router) {
     $router->get('sentence', 'SentenceController@all');
     $router->get('sentence/{book}', 'SentenceController@book');
 
