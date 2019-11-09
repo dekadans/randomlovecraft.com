@@ -15,6 +15,7 @@ class SentenceController extends Controller
     public function __construct(Request $request)
     {
         $this->numberOfResults = is_numeric($request->input('n')) ? (int)$request->input('n') : 1;
+        $this->numberOfResults = min($this->numberOfResults, 100);
     }
 
     public function all()

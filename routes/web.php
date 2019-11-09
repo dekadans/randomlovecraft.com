@@ -18,8 +18,8 @@ $router->get('/', function () use ($router) {
 
 
 $router->group(['prefix' => 'api', 'middleware' => ['auth', 'log']], function () use ($router) {
-    $router->get('sentence', 'SentenceController@all');
-    $router->get('sentence/{book}', 'SentenceController@book');
+    $router->get('sentences', 'SentenceController@all');
+    $router->get('sentences/{book}', 'SentenceController@book');
 
     $router->get('books', 'BooksController@listBooks');
 });
