@@ -9,6 +9,10 @@ body {
     height: 100%;
 }
 
+h1 {
+    font-size: 2rem;
+}
+
 .cover-container {
     max-width: 75em;
 }

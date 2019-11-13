@@ -9,13 +9,13 @@ Vue.component('Sentence', {
 });
 
 Vue.component('Longform', {
-    props : ['paragraphs'],
+    props : ['paragraphs', 'max'],
     template: `
         <div id="text">
             <p v-for="text in paragraphs">{{ text }}</p>
             
-            <p>
-                <button id="paragraph" class="btn btn-sm btn-outline-secondary shadow-none">Add paragraph</button>
+            <p v-if="paragraphs.length < max">
+                <button @click="$emit('add-paragraph')" id="paragraph" class="btn btn-sm btn-outline-secondary shadow-none">Add paragraph</button>
             </p>
         </div>
     `
@@ -25,10 +25,10 @@ Vue.component('Longform', {
 Vue.component('Switcher', {
     template: `
         <div id="switch" class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-secondary active shadow-none" v-on:click="$emit('mode','sentence')">
+            <label class="btn btn-secondary active shadow-none" @click="$emit('mode','sentence')">
                 <input type="radio" name="switch" data-id="sentence" autocomplete="off" checked> Sentence
             </label>
-            <label class="btn btn-secondary shadow-none" v-on:click="$emit('mode','text')">
+            <label class="btn btn-secondary shadow-none" @click="$emit('mode','text')">
                 <input type="radio" name="switch" data-id="text" autocomplete="off"> Text
             </label>
         </div>
@@ -39,7 +39,7 @@ Vue.component('Switcher', {
 Vue.component('Refresh', {
     props : ['refreshTexts'],
     template: `
-        <button v-on:click="refreshTexts()" class="btn btn-secondary shadow-none">Refresh</button>
+        <button @click="refreshTexts()" class="btn btn-secondary shadow-none">Refresh</button>
     `
 });
 
@@ -56,21 +56,52 @@ const app = new Vue({
                 year : '1900'
             }
         },
-        paragraphs : [
-            'Text 1',
-            'Text 2'
-        ]
+        paragraphs : [],
+        sentencesPerParagraph : 4,
+        maxNumberOfParagraphs : 3
     },
     methods : {
+        refresh : function() {
+            if (this.mode === 'sentence') {
+                this.refreshSentence();
+            } else {
+                this.refreshText(false);
+            }
+        },
         refreshSentence : async function() {
-            const response = await fetch('/api/sentences?key=hej');
-            const myJson = await response.json();
-            this.sentence = myJson.data[0];
-            this.initiated = true;
+            const response = await this.getSentences(1);
+            this.sentence = response[0];
+        },
+        refreshText : async function(addToStack = true) {
+            const response = await this.getSentences(this.sentencesPerParagraph);
+
+            if (!addToStack) {
+                this.paragraphs = [];
+            }
+
+            this.addParagraph(response);
+        },
+        getSentences : async function(numberOfSentences = 1) {
+            const response = await fetch('/api/sentences?key=hej&n=' + numberOfSentences);
+            const jsonResponse = await response.json();
+            return jsonResponse.data;
+        },
+        addParagraph : function(sentences) {
+            let paragraph = '';
+            for (let i = 0; i < sentences.length; i++) {
+                paragraph += ' ' + sentences[i].sentence;
+            }
+            this.paragraphs.push(paragraph);
         }
     },
     mounted : function() {
-        this.refreshSentence();
+        const promise = this.getSentences(this.sentencesPerParagraph+1);
+        promise.then((sentences)  => {
+            this.sentence = sentences.pop();
+            this.addParagraph(sentences);
+
+            this.initiated = true;
+        })
     },
     el: '#app'
 });

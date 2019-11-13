@@ -33,21 +33,23 @@
         <main role="main" class="inner cover my-4">
             <Sentence
                 v-if="initiated && mode === 'sentence'"
-                v-bind:text="sentence.sentence"
-                v-bind:book="sentence.book.name"
-                v-bind:year="sentence.book.year">
+                :text="sentence.sentence"
+                :book="sentence.book.name"
+                :year="sentence.book.year">
             </Sentence>
             <Longform
                 v-if="initiated && mode === 'text'"
-                v-bind:paragraphs="paragraphs">
+                :paragraphs="paragraphs"
+                :max="maxNumberOfParagraphs"
+                @add-paragraph="refreshText()">
             </Longform>
         </main>
 
         <footer class="mastfoot mt-auto">
             <div class="inner">
-                <Switcher v-on:mode="mode = $event"></Switcher>
+                <Switcher @mode="mode = $event"></Switcher>
 
-                <Refresh v-bind:refresh-texts="refreshSentence"></Refresh>
+                <Refresh :refresh-texts="refresh"></Refresh>
             </div>
         </footer>
     </div>
