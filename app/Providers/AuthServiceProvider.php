@@ -34,7 +34,7 @@ class AuthServiceProvider extends ServiceProvider
             if ($request->input('key')) {
                 $apiKey = ApiKey::where('api_key', $request->input('key'))->first();
 
-                if ($apiKey->active) {
+                if ($apiKey && $apiKey->active) {
                     return $apiKey;
                 }
             }

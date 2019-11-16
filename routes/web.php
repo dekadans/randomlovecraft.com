@@ -16,6 +16,9 @@ $router->get('/', function () use ($router) {
     return view('index');
 });
 
+$router->get('api/info', function () use ($router) {
+    return view('api');
+});
 
 $router->group(['prefix' => 'api', 'middleware' => ['auth', 'log']], function () use ($router) {
     $router->get('sentences', 'SentenceController@all');
