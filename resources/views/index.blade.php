@@ -27,5 +27,8 @@
         </footer>
     </div>
 
+    <script>
+        const apiKey = '{{ $apiKey  }}';
+    </script>
     <script src="/components/components.js" defer></script>
 @endsection

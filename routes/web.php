@@ -13,7 +13,9 @@
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 $router->get('/', function () use ($router) {
-    return view('index');
+    return view('index', [
+        'apiKey' => env('DEFAULT_KEY')
+    ]);
 });
 
 $router->get('api/info', function () use ($router) {

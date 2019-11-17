@@ -46,6 +46,7 @@ Vue.component('Refresh', {
 
 const app = new Vue({
     data : {
+        apiKey : apiKey,
         initiated : false,
         mode : 'sentence',
         sentence : {
@@ -82,7 +83,11 @@ const app = new Vue({
             this.addParagraph(response);
         },
         getSentences : async function(numberOfSentences = 1) {
-            const response = await fetch('/api/sentences?key=hej&n=' + numberOfSentences);
+            const response = await fetch('/api/sentences?n=' + numberOfSentences, {
+                headers : {
+                    'X-Api-key' : this.apiKey
+                }
+            });
             const jsonResponse = await response.json();
             return jsonResponse.data;
         },
