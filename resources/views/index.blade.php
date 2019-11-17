@@ -3,7 +3,7 @@
 @section('content')
     <div id="app" class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
         @include('header')
-        <main role="main" class="inner cover my-4">
+        <main role="main" class="inner cover my-4 text-center">
             <Sentence
                 v-if="initiated && mode === 'sentence'"
                 :text="sentence.sentence"
@@ -18,7 +18,7 @@
             </Longform>
         </main>
 
-        <footer class="mastfoot mt-auto">
+        <footer class="mastfoot mt-auto text-center">
             <div class="inner">
                 <Switcher @mode="mode = $event"></Switcher>
 

@@ -16,7 +16,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 
-<body class="text-center">
+<body>
 @yield('content')
 </body>
 </html>

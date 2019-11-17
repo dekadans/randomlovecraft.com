@@ -6,8 +6,10 @@
         <h3 class="masthead-brand">Random Lovecraft</h3>
         <nav class="nav nav-masthead justify-content-center">
             <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/">Home</a>
+            <a class="nav-link {{ Request::is('about') ? 'active' : '' }}" href="/about">About</a>
             <a class="nav-link {{ Request::is('api/info') ? 'active' : '' }}" href="/api/info">API</a>
-            <a class="nav-link" href="#">About</a>
         </nav>
+
+        <span class="clearfix"></span>
     </div>
 </header>
