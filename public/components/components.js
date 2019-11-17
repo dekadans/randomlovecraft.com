@@ -12,6 +12,8 @@ Vue.component('Longform', {
     props : ['paragraphs', 'max'],
     template: `
         <div id="text">
+            <p><em>A generated text composed of random sentences from the works of H.P. Lovecraft.</em></p>
+            
             <p v-for="text in paragraphs">{{ text }}</p>
             
             <p v-if="paragraphs.length < max">

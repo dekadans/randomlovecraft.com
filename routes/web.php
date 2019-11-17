@@ -23,8 +23,9 @@ $router->get('api/info', function () use ($router) {
 });
 
 $router->group(['prefix' => 'api', 'middleware' => ['auth', 'log']], function () use ($router) {
-    $router->get('sentences', 'SentenceController@all');
-    $router->get('sentences/{book}', 'SentenceController@book');
+    $router->get('sentences', 'SentenceController@random');
+    $router->get('sentences/{id}', 'SentenceController@byId');
 
+    $router->get('books/{book}/sentences', 'SentenceController@randomByBook');
     $router->get('books', 'BooksController@listBooks');
 });
