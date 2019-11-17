@@ -16,7 +16,7 @@ $router->get('/', function () use ($router) {
     return view('index');
 });
 
-$router->get('api/info', function () use ($router) {
+$router->get('api', function () use ($router) {
     return view('api');
 });
 

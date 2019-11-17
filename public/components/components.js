@@ -84,7 +84,7 @@ const app = new Vue({
             this.addParagraph(response);
         },
         getSentences : async function(numberOfSentences = 1) {
-            const response = await fetch('/api/sentences?n=' + numberOfSentences);
+            const response = await fetch('/api/sentences?limit=' + numberOfSentences);
             const jsonResponse = await response.json();
             return jsonResponse.data;
         },

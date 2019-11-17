@@ -9,8 +9,18 @@ body {
     height: 100%;
 }
 
-h1 {
+#app h1 {
     font-size: 2rem;
+}
+
+#apiDocs h2 {
+    font-size: 1.75rem;
+    margin-top: 30px;
+}
+
+#apiDocs h3 {
+    font-size: 1.40rem;
+    margin-top: 30px;
 }
 
 .cover-container {
