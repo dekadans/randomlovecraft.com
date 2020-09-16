@@ -60,6 +60,16 @@ body {
     }
 }
 
+@media(max-width: 576px) {
+    #app h1 {
+        font-size: 1.25rem;
+    }
+
+    #app .lead {
+        font-size: 1rem;
+    }
+}
+
 .cover {
     padding: 0 1.5rem;
 }
