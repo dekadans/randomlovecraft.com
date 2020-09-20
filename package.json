@@ -1,0 +1,30 @@
+{
+  "name": "randomlovecraft.com",
+  "version": "1.0.0",
+  "description": "## Todo",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dekadans/randomlovecraft.com.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dekadans/randomlovecraft.com/issues"
+  },
+  "homepage": "https://github.com/dekadans/randomlovecraft.com#readme",
+  "dependencies": {
+    "vue": "^2.6.12"
+  },
+  "devDependencies": {
+    "css-loader": "^4.3.0",
+    "style-loader": "^1.2.1",
+    "vue-loader": "^15.9.3",
+    "vue-template-compiler": "^2.6.12",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
+  }
+}
