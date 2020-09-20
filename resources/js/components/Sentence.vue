@@ -12,5 +12,17 @@ export default {
 </script>
 
 <style scoped>
+    h1 {
+        font-size: 1.75rem;
+    }
 
+    @media(max-width: 576px) {
+        h1 {
+            font-size: 1.25rem;
+        }
+
+        .lead {
+            font-size: 1rem;
+        }
+    }
 </style>

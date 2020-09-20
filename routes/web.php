@@ -16,6 +16,10 @@ $router->get('/', function () use ($router) {
     return view('index');
 });
 
+$router->get('/about', function () use ($router) {
+    return view('index');
+});
+
 $router->get('api', function () use ($router) {
     return view('api');
 });
