@@ -9,12 +9,6 @@ body {
     height: 100%;
 }
 
-#swagger {
-    background-color: #ffffff;
-    padding: 5px;
-    margin: 20px 0px;
-}
-
 .cover-container {
     max-width: 75em;
 }

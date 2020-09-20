@@ -1,20 +1,12 @@
 import Vue from 'vue';
-import NavHeader from "./components/NavHeader.vue";
-import SwaggerUI from "swagger-ui";
-import 'swagger-ui/dist/swagger-ui.css';
+import ApiDocumentation from "./components/ApiDocumentation.vue";
 
 new Vue({
     el : '#api',
     render(h) {
-        return h('NavHeader');
-    },
-    mounted() {
-        SwaggerUI({
-            dom_id: '#swagger',
-            url: "/openapi.yaml"
-        });
+        return h('ApiDocumentation');
     },
     components : {
-        NavHeader
+        ApiDocumentation
     }
 });
