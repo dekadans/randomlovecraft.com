@@ -4,7 +4,6 @@
             <h3 class="text-center masthead-brand">Random Lovecraft</h3>
             <nav class="nav nav-masthead justify-content-center">
                 <a :class="getClass('/')" href="/">Home</a>
-                <a :class="getClass('/about')" href="/about">About</a>
                 <a :class="getClass('/api')" href="/api">API</a>
             </nav>
 

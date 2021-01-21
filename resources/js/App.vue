@@ -14,6 +14,9 @@
                 :max="maxNumberOfParagraphs"
                 @add-paragraph="refreshText()">
             </Longform>
+            <p v-if="!initiated" class="lead">
+                Loading...
+            </p>
         </main>
 
         <footer class="mastfoot mt-auto text-center">
