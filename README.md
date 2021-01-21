@@ -1,9 +1,7 @@
 # randomlovecraft.com
 
-## Todo
+Just a stupid thing I did.
 
-- Ta bort API nyckel och loggning
-- ID för sentences
-- CORS
-- API docs
-- About
+Warning, contains racism because Lovecraft was a racist :(
+
+The text comes from the [ebook by The Arkham Archivist](https://arkhamarchivist.com/free-complete-lovecraft-ebook-nook-kindle/).

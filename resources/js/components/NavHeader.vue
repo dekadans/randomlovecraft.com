@@ -5,6 +5,7 @@
             <nav class="nav nav-masthead justify-content-center">
                 <a :class="getClass('/')" href="/">Home</a>
                 <a :class="getClass('/api')" href="/api">API</a>
+                <a class="nav-link" href="https://github.com/dekadans/randomlovecraft.com">Github</a>
             </nav>
 
             <span class="clearfix"></span>
