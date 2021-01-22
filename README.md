@@ -4,4 +4,6 @@ Just a stupid thing I did.
 
 Warning, contains racism because Lovecraft was a racist :(
 
+It contains some 16000 sentences. The database can be downloaded from [here](https://f.tthe.se/dl/dy2pj/15a9d9efc51c5aa9670d17c190307dc87b6fe494).
+
 The text comes from the [ebook by The Arkham Archivist](https://arkhamarchivist.com/free-complete-lovecraft-ebook-nook-kindle/).
