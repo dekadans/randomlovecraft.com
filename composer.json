@@ -5,7 +5,8 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "laravel/lumen-framework": "^8.0"
+        "laravel/lumen-framework": "^8.0",
+        "league/commonmark": "^1.5"
     },
     "require-dev": {
         "fzaninotto/faker": "^1.4",

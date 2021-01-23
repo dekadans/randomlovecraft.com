@@ -1,5 +1,10 @@
 <?php
 
+use League\CommonMark\CommonMarkConverter;
+use League\CommonMark\Environment;
+use League\CommonMark\Extension\ExternalLink\ExternalLinkExtension;
+use League\CommonMark\MarkdownConverterInterface;
+
 require_once __DIR__.'/../vendor/autoload.php';
 
 (new Laravel\Lumen\Bootstrap\LoadEnvironmentVariables(
@@ -24,6 +29,19 @@ $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
     App\Console\Kernel::class
 );
+
+$app->bind(MarkdownConverterInterface::class, function () {
+    $env = Environment::createCommonMarkEnvironment();
+    $env->addExtension(new ExternalLinkExtension());
+    $config = [
+        'external_link' => [
+            'internal_hosts' => ['randomlovecraft.com', 'f.tthe.se'],
+            'open_in_new_window' => true,
+        ]
+    ];
+
+    return new CommonMarkConverter($config, $env);
+});
 
 $app->routeMiddleware([
     'auth' => App\Http\Middleware\Authenticate::class,
