@@ -5,7 +5,7 @@
             <nav class="nav nav-masthead justify-content-center">
                 <a :class="getClass('/')" href="/">Home</a>
                 <a :class="getClass('/api')" href="/api">API</a>
-                <a class="nav-link" href="https://github.com/dekadans/randomlovecraft.com">Github</a>
+                <a class="nav-link" href="" @click.prevent="showAbout">About</a>
             </nav>
 
             <span class="clearfix"></span>
@@ -22,6 +22,12 @@ export default {
                 classList += ' active';
             }
             return classList;
+        },
+        async showAbout() {
+            const about = await fetch('/about');
+            const html = await about.text();
+            $('.modal-body').html(html);
+            $('.modal').modal();
         }
     }
 }

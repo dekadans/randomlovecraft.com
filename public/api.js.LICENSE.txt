@@ -1,0 +1,7 @@
+/*!
+ * Vue.js v2.6.12
+ * (c) 2014-2020 Evan You
+ * Released under the MIT License.
+ */
+
+/*! For license information please see swagger-ui-es-bundle.js.LICENSE.txt */

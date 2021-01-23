@@ -7,7 +7,6 @@ $router->get('/', function () use ($router) {
 
 $router->get('/about', function (\League\CommonMark\MarkdownConverterInterface $markdown) {
     $readme = file_get_contents(__DIR__ . '/../README.md');
-    $readme .= "\n[Project on GitHub](https://github.com/dekadans/randomlovecraft.com)";
     return $markdown->convertToHtml($readme);
 });
 
