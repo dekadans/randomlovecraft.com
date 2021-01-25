@@ -29,9 +29,9 @@ class SentenceController extends Controller
         return SentenceResource::make($sentences);
     }
 
-    public function randomByBook($bookId)
+    public function randomByBook(string $id)
     {
-        $book = Book::where('uuid', $bookId)->first();
+        $book = Book::where('uuid', $id)->first();
 
         $sentences = $book->sentences()->inRandomOrder()->with('book')->limit($this->numberOfResults)->get();
 

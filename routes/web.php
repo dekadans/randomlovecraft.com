@@ -18,6 +18,6 @@ $router->group(['prefix' => '/api', 'middleware' => ['cors']], function () use (
     $router->get('/sentences', 'SentenceController@random');
     $router->get('/sentences/{id}', 'SentenceController@byId');
 
-    $router->get('/books/{book}/sentences', 'SentenceController@randomByBook');
+    $router->get('/books/{id}/sentences', 'SentenceController@randomByBook');
     $router->get('/books', 'BooksController@listBooks');
 });
