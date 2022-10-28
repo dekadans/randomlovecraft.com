@@ -21,3 +21,8 @@ $router->group(['prefix' => '/api', 'middleware' => ['cors']], function () use (
     $router->get('/books/{id}/sentences', 'SentenceController@randomByBook');
     $router->get('/books', 'BooksController@listBooks');
 });
+
+
+$router->options('/api/*', function () use ($router) {
+    return response('', 204);
+});
