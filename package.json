@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/dekadans/randomlovecraft.com#readme",
   "dependencies": {
-    "swagger-ui": "^3.40.0",
+    "swagger-ui": "^4.1.3",
     "vue": "^2.6.12"
   },
   "devDependencies": {
