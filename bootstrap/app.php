@@ -1,9 +1,10 @@
 <?php
 
-use League\CommonMark\CommonMarkConverter;
-use League\CommonMark\Environment;
+use League\CommonMark\ConverterInterface;
+use League\CommonMark\Environment\Environment;
+use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\Extension\ExternalLink\ExternalLinkExtension;
-use League\CommonMark\MarkdownConverterInterface;
+use League\CommonMark\MarkdownConverter;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
@@ -30,9 +31,7 @@ $app->singleton(
     App\Console\Kernel::class
 );
 
-$app->bind(MarkdownConverterInterface::class, function () {
-    $env = Environment::createCommonMarkEnvironment();
-    $env->addExtension(new ExternalLinkExtension());
+$app->bind(ConverterInterface::class, function () {
     $config = [
         'external_link' => [
             'internal_hosts' => ['randomlovecraft.com', 'f.tthe.se'],
@@ -40,7 +39,10 @@ $app->bind(MarkdownConverterInterface::class, function () {
         ]
     ];
 
-    return new CommonMarkConverter($config, $env);
+    $env = new Environment($config);
+    $env->addExtension(new ExternalLinkExtension());
+    $env->addExtension(new CommonMarkCoreExtension());
+    return new MarkdownConverter($env);
 });
 
 $app->routeMiddleware([
